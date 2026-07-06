@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brandbook | Coletivo Inspira</title>
+    
+    <!-- Google Fonts: Syne (Primária) e DM Sans (Secundária) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuração do Tailwind com as Cores Oficiais -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        inspira: {
+                            green: '#133824',     // Verde Floresta Nativo
+                            offwhite: '#F7F7F4',  // Off-White UI
+                            mustard: '#E5A91E',   // Mostarda Clássica
+                            orange: '#F05D23',    // Laranja Cinético
+                            pink: '#E5007C',      // Rosa Choque Urbano
+                            cream: '#FDFBF7',     // Creme (Paleta C)
+                            mint: '#A7E8C8',      // Verde Menta (Paleta C)
+                            lime: '#B4FF33',      // Verde Claro Brilhante (Paleta B)
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Syne', 'sans-serif'],
+                        body: ['DM Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos Customizados e Animações */
+        html { scroll-behavior: smooth; }
+        body { background-color: #F7F7F4; color: #133824; }
+        
+        .font-display { font-family: 'Syne', sans-serif; }
+        .font-body { font-family: 'DM Sans', sans-serif; }
+        
+        /* Estrutura Empilhada do Logo (Block Layout) */
+        .logo-stack {
+            display: flex;
+            gap: 0.08em; /* Espaçamento horizontal entre colunas */
+            line-height: 0.78; /* Espaçamento vertical entre linhas */
+            user-select: none;
+        }
+        .logo-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Aplicações Incorretas (Demonstração) */
+        .wrong-stretch { transform: scaleX(1.5); display: flex; }
+        .wrong-rotate { transform: rotate(-15deg); display: flex; }
+        .wrong-shadow { filter: drop-shadow(10px 10px 5px rgba(0,0,0,0.5)); }
+        .wrong-font { font-family: 'Times New Roman', Times, serif; font-weight: normal;}
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .color-swatch:hover { transform: scale(1.05); transition: transform 0.2s; }
+    </style>
+</head>
+<body class="font-body antialiased selection:bg-inspira-mustard selection:text-inspira-green">
+
+    <!-- Navegação -->
+    <nav class="fixed w-full z-50 bg-inspira-offwhite/90 backdrop-blur-md border-b border-inspira-green/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <i class="ph-fill ph-leaf text-inspira-green text-3xl"></i>
+                    <!-- Versão Horizontal Simplificada para Navbar -->
+                    <span class="font-display font-bold text-2xl tracking-tighter text-inspira-green">+INSPIRA</span>
+                </div>
+                <div class="hidden md:flex space-x-8 font-medium text-sm">
+                    <a href="#manifesto" class="text-inspira-green hover:text-inspira-orange transition">Manifesto</a>
+                    <a href="#logo" class="text-inspira-green hover:text-inspira-orange transition">O Logotipo</a>
+                    <a href="#cores" class="text-inspira-green hover:text-inspira-orange transition">Sistema de Cores</a>
+                    <a href="#tipografia" class="text-inspira-green hover:text-inspira-orange transition">Tipografia</a>
+                    <a href="#voz" class="text-inspira-green hover:text-inspira-orange transition">Voz & Estilo</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col items-center text-center">
+        <div class="inline-block px-4 py-1.5 rounded-full border border-inspira-mustard text-inspira-mustard font-bold text-sm mb-6 uppercase tracking-widest">
+            Brandbook Oficial
+        </div>
+        <h1 class="font-display font-extrabold text-5xl md:text-7xl tracking-tight leading-tight mb-6 text-inspira-green">
+            Onde a natureza encontra <br> a <span class="text-inspira-orange">tecnologia.</span>
+        </h1>
+        <p class="max-w-2xl text-lg md:text-xl text-inspira-green/80 mb-10 leading-relaxed">
+            A materialização visual, verbal e comportamental do nosso propósito. De Bonito-MS a Belo Horizonte, guiando a identidade visual do <strong>Coletivo Inspira</strong>.
+        </p>
+    </section>
+
+    <!-- Manifesto & Pilares -->
+    <section id="manifesto" class="py-20 bg-inspira-green text-inspira-offwhite">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="font-display font-bold text-4xl mb-6">A fluidez das águas. A precisão do código.</h2>
+                    <p class="text-lg text-inspira-offwhite/80 mb-6 leading-relaxed">
+                        Nascemos no epicentro do ecoturismo. Criado pelos amigos de infância @predo.baga e @felipeatene em Bonito-MS, conectamos a exuberância natural às inovações tecnológicas globais.
+                    </p>
+                    <p class="text-lg text-inspira-offwhite/80 leading-relaxed">
+                        A nossa expansão para Belo Horizonte não abandona nossas raízes, mas cria uma simbiose poderosa: a união da natureza de MS com a energia criativa e festiva da capital mineira.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <!-- Cards de Pilares -->
+                    <div class="bg-inspira-offwhite/10 p-6 rounded-2xl border border-inspira-offwhite/20">
+                        <i class="ph ph-code text-inspira-mustard text-4xl mb-4"></i>
+                        <h3 class="font-display font-bold text-xl mb-2">Tecnologia</h3>
+                        <p class="text-sm text-inspira-offwhite/70">inspira.dev.br e portfólios no GitHub.</p>
+                    </div>
+                    <div class="bg-inspira-offwhite/10 p-6 rounded-2xl border border-inspira-offwhite/20">
+                        <i class="ph ph-confetti text-inspira-pink text-4xl mb-4"></i>
+                        <h3 class="font-display font-bold text-xl mb-2">Cultura</h3>
+                        <p class="text-sm text-inspira-offwhite/70">Carnaboia, Meu Bloquinho e Guavira Photo.</p>
+                    </div>
+                    <div class="bg-inspira-offwhite/10 p-6 rounded-2xl border border-inspira-offwhite/20">
+                        <i class="ph ph-heartbeat text-inspira-mint text-4xl mb-4"></i>
+                        <h3 class="font-display font-bold text-xl mb-2">Saúde</h3>
+                        <p class="text-sm text-inspira-offwhite/70">Respira & Inspira e Coletivo Cuida.</p>
+                    </div>
+                    <div class="bg-inspira-offwhite/10 p-6 rounded-2xl border border-inspira-offwhite/20">
+                        <i class="ph ph-users-three text-inspira-orange text-4xl mb-4"></i>
+                        <h3 class="font-display font-bold text-xl mb-2">Diversidade</h3>
+                        <p class="text-sm text-inspira-offwhite/70">Rede de apoio e empoderamento InspireELAS.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O Logotipo -->
+    <section id="logo" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="font-display font-bold text-4xl text-inspira-green mb-4">Diretrizes do Logotipo</h2>
+            <p class="text-lg text-inspira-green/70 max-w-2xl mx-auto">A identidade primária que sintetiza a natureza orgânica e a precisão asséptica do design em um formato arquitetônico sólido.</p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-10 md:p-24 shadow-sm border border-gray-100 flex flex-col items-center justify-center mb-16 relative overflow-hidden">
+            <!-- Grid Background -->
+            <div class="absolute inset-0" style="background-image: radial-gradient(#E5A91E 1px, transparent 1px); background-size: 20px 20px; opacity: 0.1;"></div>
+            
+            <!-- Logo Principal Sólido Empilhado -->
+            <div class="relative z-10 text-center flex flex-col items-center">
+                
+                <div class="logo-stack font-display font-black text-inspira-green text-[5rem] md:text-[10rem] tracking-tighter">
+                    <div class="logo-col"><span>+</span><span>P</span></div>
+                    <div class="logo-col"><span>I</span><span>I</span></div>
+                    <div class="logo-col"><span>N</span><span>R</span></div>
+                    <div class="logo-col"><span>S</span><span>A</span></div>
+                </div>
+
+                <p class="mt-12 font-medium text-inspira-green/60 uppercase tracking-widest text-sm">Logotipo Oficial (Formato Sólido em Bloco)</p>
+            </div>
+            
+            <!-- Area de Respiro Visualizer -->
+            <div class="absolute border border-dashed border-inspira-mustard p-10 z-0 h-[70%] md:h-[65%] w-[80%] md:w-[60%] flex items-center justify-center pointer-events-none">
+                <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-inspira-offwhite px-2 text-xs text-inspira-mustard font-bold">X (Altura do "I")</div>
+                <div class="absolute -left-8 top-1/2 -translate-y-1/2 bg-inspira-offwhite px-2 text-xs text-inspira-mustard font-bold transform -rotate-90">X</div>
+            </div>
+        </div>
+
+        <!-- Aplicações Incorretas -->
+        <h3 class="font-display font-bold text-2xl text-inspira-green mb-8">O que NÃO fazer (Aplicações Incorretas)</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="bg-red-50 rounded-2xl p-6 flex flex-col items-center justify-center text-center border border-red-100">
+                <div class="logo-stack font-display text-4xl font-black text-inspira-green wrong-stretch mb-4">
+                    <div class="logo-col"><span>+</span><span>P</span></div>
+                    <div class="logo-col"><span>I</span><span>I</span></div>
+                    <div class="logo-col"><span>N</span><span>R</span></div>
+                    <div class="logo-col"><span>S</span><span>A</span></div>
+                </div>
+                <p class="text-xs text-red-600 font-medium">Não distorcer proporções</p>
+            </div>
+            <div class="bg-red-50 rounded-2xl p-6 flex flex-col items-center justify-center text-center border border-red-100">
+                <div class="logo-stack font-display text-4xl font-black text-inspira-green wrong-rotate mb-4">
+                    <div class="logo-col"><span>+</span><span>P</span></div>
+                    <div class="logo-col"><span>I</span><span>I</span></div>
+                    <div class="logo-col"><span>N</span><span>R</span></div>
+                    <div class="logo-col"><span>S</span><span>A</span></div>
+                </div>
+                <p class="text-xs text-red-600 font-medium">Não rotacionar</p>
+            </div>
+            <div class="bg-red-50 rounded-2xl p-6 flex flex-col items-center justify-center text-center border border-red-100">
+                <div class="logo-stack font-display text-4xl font-black text-inspira-green wrong-shadow mb-4">
+                    <div class="logo-col"><span>+</span><span>P</span></div>
+                    <div class="logo-col"><span>I</span><span>I</span></div>
+                    <div class="logo-col"><span>N</span><span>R</span></div>
+                    <div class="logo-col"><span>S</span><span>A</span></div>
+                </div>
+                <p class="text-xs text-red-600 font-medium">Não usar drop shadows</p>
+            </div>
+            <div class="bg-red-50 rounded-2xl p-6 flex flex-col items-center justify-center text-center border border-red-100">
+                <div class="logo-stack text-4xl text-inspira-green wrong-font mb-4">
+                    <div class="logo-col"><span>+</span><span>P</span></div>
+                    <div class="logo-col"><span>I</span><span>I</span></div>
+                    <div class="logo-col"><span>N</span><span>R</span></div>
+                    <div class="logo-col"><span>S</span><span>A</span></div>
+                </div>
+                <p class="text-xs text-red-600 font-medium">Não alterar tipografia</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sistema de Cores -->
+    <section id="cores" class="py-24 bg-white border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <h2 class="font-display font-bold text-4xl text-inspira-green mb-4">Sistema de Cores</h2>
+                    <p class="text-lg text-inspira-green/70 max-w-2xl">Arquitetado para transitar entre a calmaria de uma floresta e a vibração pop urbana, regido pela regra 60-30-10.</p>
+                </div>
+                
+                <!-- Tab Buttons -->
+                <div class="flex space-x-2 bg-inspira-offwhite p-1 rounded-xl">
+                    <button onclick="openTab('tab-base')" class="tab-btn px-4 py-2 rounded-lg text-sm font-bold bg-white shadow-sm text-inspira-green">Cores Base</button>
+                    <button onclick="openTab('tab-solar')" class="tab-btn px-4 py-2 rounded-lg text-sm font-bold text-inspira-green/60 hover:text-inspira-green transition">Tech (Solar)</button>
+                    <button onclick="openTab('tab-pop')" class="tab-btn px-4 py-2 rounded-lg text-sm font-bold text-inspira-green/60 hover:text-inspira-green transition">Cultura (Pop)</button>
+                    <button onclick="openTab('tab-tropical')" class="tab-btn px-4 py-2 rounded-lg text-sm font-bold text-inspira-green/60 hover:text-inspira-green transition">Saúde (Tropical)</button>
+                </div>
+            </div>
+
+            <!-- Tab Content: Base Palette -->
+            <div id="tab-base" class="tab-content active">
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                    <!-- Verde Base -->
+                    <div class="color-swatch flex flex-col h-64 rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer">
+                        <div class="bg-inspira-green flex-grow"></div>
+                        <div class="p-4 bg-white">
+                            <h4 class="font-bold text-sm mb-1">Verde Floresta</h4>
+                            <p class="text-xs text-gray-500 font-mono">#133824</p>
+                        </div>
+                    </div>
+                    <!-- Offwhite -->
+                    <div class="color-swatch flex flex-col h-64 rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer">
+                        <div class="bg-inspira-offwhite flex-grow"></div>
+                        <div class="p-4 bg-white">
+                            <h4 class="font-bold text-sm mb-1">Off-White UI</h4>
+                            <p class="text-xs text-gray-500 font-mono">#F7F7F4</p>
+                        </div>
+                    </div>
+                    <!-- Mostarda -->
+                    <div class="color-swatch flex flex-col h-64 rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer">
+                        <div class="bg-inspira-mustard flex-grow"></div>
+                        <div class="p-4 bg-white">
+                            <h4 class="font-bold text-sm mb-1">Mostarda Inspira</h4>
+                            <p class="text-xs text-gray-500 font-mono">#E5A91E</p>
+                        </div>
+                    </div>
+                    <!-- Laranja -->
+                    <div class="color-swatch flex flex-col h-64 rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer">
+                        <div class="bg-inspira-orange flex-grow"></div>
+                        <div class="p-4 bg-white">
+                            <h4 class="font-bold text-sm mb-1">Laranja Cinético</h4>
+                            <p class="text-xs text-gray-500 font-mono">#F05D23</p>
+                        </div>
+                    </div>
+                    <!-- Rosa -->
+                    <div class="color-swatch flex flex-col h-64 rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer">
+                        <div class="bg-inspira-pink flex-grow"></div>
+                        <div class="p-4 bg-white">
+                            <h4 class="font-bold text-sm mb-1">Rosa Choque</h4>
+                            <p class="text-xs text-gray-500 font-mono">#E5007C</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Solar (Tech) -->
+            <div id="tab-solar" class="tab-content">
+                <div class="bg-[#Fdfceb] p-10 rounded-3xl border border-[#e8ebd3]">
+                    <h3 class="font-display font-bold text-2xl text-inspira-green mb-2">Paleta A: Expansão Solar</h3>
+                    <p class="text-inspira-green/70 mb-8 max-w-2xl">Foco em tecnologia (inspira.dev.br). Alta luminosidade para facilitar a leitura de código, com destaques vivos.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="w-20 h-20 rounded-full bg-inspira-green shadow-md"></div>
+                        <div class="w-20 h-20 rounded-full bg-[#Fdfceb] shadow-md border border-gray-200"></div>
+                        <div class="w-20 h-20 rounded-full bg-[#8ECA73] shadow-md"></div>
+                        <div class="w-20 h-20 rounded-full bg-inspira-mustard shadow-md"></div>
+                        <div class="w-20 h-20 rounded-full bg-[#FFD700] shadow-md"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Pop (Culture) -->
+            <div id="tab-pop" class="tab-content">
+                <div class="bg-inspira-offwhite p-10 rounded-3xl border border-gray-200">
+                    <h3 class="font-display font-bold text-2xl text-inspira-green mb-2">Paleta B: Pop Coletivo</h3>
+                    <p class="text-inspira-green/70 mb-8 max-w-2xl">Eventos e blocos de rua. Agressiva, jovem e saturada. O Rosa Choque assume o protagonismo em CTAs.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="w-20 h-20 rounded-full bg-inspira-green shadow-md"></div>
+                        <div class="w-20 h-20 rounded-full bg-inspira-offwhite shadow-md border border-gray-200"></div>
+                        <div class="w-20 h-20 rounded-full bg-inspira-pink shadow-md"></div>
+                        <div class="w-20 h-20 rounded-full bg-inspira-mustard shadow-md"></div>
+                        <div class="w-20 h-20 rounded-full bg-inspira-lime shadow-md"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Tropical (Health/Diversity) -->
+            <div id="tab-tropical" class="tab-content">
+                <div class="bg-inspira-cream p-10 rounded-3xl border border-[#f0ebe1]">
+                    <h3 class="font-display font-bold text-2xl text-inspira-green mb-2">Paleta C: Tropical Quente</h3>
+                    <p class="text-inspira-green/70 mb-8 max-w-2xl">Projetos de saúde mental e empoderamento. Tons orgânicos, acolhedores e terapêuticos.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="w-20 h-20 rounded-full bg-inspira-cream shadow-md border border-gray-200"></div>
+                        <div class="w-20 h-20 rounded-full bg-inspira-mustard shadow-md"></div>
+                        <div class="w-20 h-20 rounded-full bg-[#FF7F50] shadow-md"></div>
+                        <div class="w-20 h-20 rounded-full bg-[#FFFACD] shadow-md"></div>
+                        <div class="w-20 h-20 rounded-full bg-inspira-mint shadow-md"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Proporção UI Demo -->
+            <div class="mt-16 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm flex flex-col md:flex-row gap-8 items-center">
+                <div class="w-full md:w-1/3">
+                    <h3 class="font-display font-bold text-2xl mb-2">A Regra 60-30-10 na prática</h3>
+                    <p class="text-sm text-gray-500">60% Fundo neutro (Off-white)<br>30% Arquitetura (Verde Escuro)<br>10% Destaque/Ação (Laranja/Rosa)</p>
+                </div>
+                <!-- Mockup de Interface -->
+                <div class="w-full md:w-2/3 bg-inspira-offwhite p-6 rounded-xl border border-gray-200">
+                    <div class="h-10 bg-inspira-green rounded-md w-full mb-6 flex items-center px-4">
+                        <div class="w-16 h-3 bg-white/20 rounded-full"></div>
+                    </div>
+                    <div class="flex gap-6">
+                        <div class="w-2/3">
+                            <h4 class="font-display text-3xl font-bold text-inspira-green mb-4">Título em Verde Escuro (30%)</h4>
+                            <p class="text-gray-500 mb-6 text-sm">O fundo dominante em Off-white compõe os 60% da tela, garantindo silêncio visual e leitura fácil das informações cruciais.</p>
+                            <button class="bg-inspira-orange text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-orange-600 transition">Call to Action (10%)</button>
+                        </div>
+                        <div class="w-1/3 bg-inspira-mustard/20 rounded-lg p-4 border border-inspira-mustard/30">
+                            <div class="w-full h-24 bg-inspira-mustard/40 rounded-md mb-2"></div>
+                            <div class="w-3/4 h-3 bg-inspira-green/50 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Tipografia -->
+    <section id="tipografia" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="font-display font-bold text-4xl text-inspira-green mb-4">Tipografia</h2>
+            <p class="text-lg text-inspira-green/70 max-w-2xl mx-auto">O emparelhamento perfeito entre o orgânico vibrante e a assepsia do código.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12">
+            <!-- Tipografia Primária -->
+            <div class="bg-white p-10 rounded-3xl border border-gray-100 shadow-sm relative overflow-hidden group">
+                <div class="absolute -right-10 -top-10 text-9xl text-gray-50 opacity-50 font-display font-bold group-hover:scale-110 transition duration-500">Aa</div>
+                <div class="relative z-10">
+                    <div class="inline-block px-3 py-1 rounded-full bg-inspira-green text-white text-xs font-bold uppercase mb-4">Primária • Títulos (H1, H2)</div>
+                    <h3 class="font-display text-5xl font-extrabold text-inspira-green mb-2">Syne</h3>
+                    <p class="text-gray-500 mb-8 text-sm">Design moderno, encorpado e com contornos abertos que remetem à organicidade do cerrado. Usar com leading (entrelinhas) fechado (100-110%).</p>
+                    
+                    <div class="font-display text-4xl font-bold text-inspira-green break-words border-t border-gray-100 pt-6">
+                        Aa Bb Cc Dd Ee Ff Gg<br>
+                        0123456789
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tipografia Secundária -->
+            <div class="bg-white p-10 rounded-3xl border border-gray-100 shadow-sm relative overflow-hidden group">
+                <div class="absolute -right-10 -top-10 text-9xl text-gray-50 opacity-50 font-body font-bold group-hover:scale-110 transition duration-500">Aa</div>
+                <div class="relative z-10">
+                    <div class="inline-block px-3 py-1 rounded-full bg-gray-200 text-gray-700 text-xs font-bold uppercase mb-4">Secundária • Corpo de Texto</div>
+                    <h3 class="font-body text-4xl font-bold text-inspira-green mb-2">DM Sans</h3>
+                    <p class="text-gray-500 mb-8 text-sm">Geométrica, limpa e funcional. Garantia de legibilidade matemática em blocos densos de texto e documentação de código. Usar leading aberto (140-160%).</p>
+                    
+                    <div class="font-body text-2xl text-inspira-green border-t border-gray-100 pt-6">
+                        A rápida raposa marrom salta sobre o cão preguiçoso.<br>
+                        <span class="font-bold">A rápida raposa marrom.</span><br>
+                        0123456789
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fotografia e Voz -->
+    <section id="voz" class="py-24 bg-inspira-green text-inspira-offwhite">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-display font-bold text-4xl mb-12 text-center">Tom de Voz & Estilo Visual</h2>
+            
+            <!-- Cards de Estilo Visual -->
+            <div class="grid md:grid-cols-3 gap-8 mb-20">
+                <!-- Vibe 1 -->
+                <div class="bg-inspira-offwhite/5 border border-inspira-offwhite/10 rounded-2xl overflow-hidden">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1542224566-6e85f2e6772f?q=80&w=600&auto=format&fit=crop');">
+                        <div class="w-full h-full bg-gradient-to-t from-inspira-green/90 to-transparent flex items-end p-6">
+                            <h3 class="font-display font-bold text-xl text-white">Natureza & Tech</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-sm text-inspira-offwhite/80">Rios cristalinos (Rio Formoso) sobrepostos com nós digitais translúcidos. Foco no ecoturismo integrado à nuvem.</p>
+                    </div>
+                </div>
+                
+                <!-- Vibe 2 -->
+                <div class="bg-inspira-offwhite/5 border border-inspira-offwhite/10 rounded-2xl overflow-hidden">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop');">
+                        <div class="w-full h-full bg-gradient-to-t from-inspira-pink/90 to-transparent mix-blend-multiply flex items-end p-6">
+                            <h3 class="font-display font-bold text-xl text-white">Pop Coletivo</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-sm text-inspira-offwhite/80">Carnaval, rua, piche e movimento. Alto contraste, uso agressivo do Rosa Choque e estética de serigrafia urbana.</p>
+                    </div>
+                </div>
+
+                <!-- Vibe 3 -->
+                <div class="bg-inspira-offwhite/5 border border-inspira-offwhite/10 rounded-2xl overflow-hidden">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600&auto=format&fit=crop');">
+                        <div class="w-full h-full bg-gradient-to-t from-inspira-mustard/80 to-transparent flex items-end p-6">
+                            <h3 class="font-display font-bold text-xl text-white">Saúde & Acolhimento</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-sm text-inspira-offwhite/80">Golden hour, luzes macias, yoga e rodas de conversa. Composição limpa, transmitindo silêncio e segurança psicológica.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabela de Tom de Voz -->
+            <div class="bg-white text-inspira-green rounded-3xl p-8 md:p-12 overflow-x-auto">
+                <h3 class="font-display font-bold text-2xl mb-6">Matriz de Personalidade Verbal</h3>
+                <table class="w-full text-left border-collapse min-w-[800px]">
+                    <thead>
+                        <tr class="border-b-2 border-inspira-green/10">
+                            <th class="py-4 px-4 font-bold">Atributo</th>
+                            <th class="py-4 px-4 font-bold">Fundamentação</th>
+                            <th class="py-4 px-4 font-bold text-inspira-green">Fazer (✅)</th>
+                            <th class="py-4 px-4 font-bold text-red-500">Não Fazer (❌)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr class="border-b border-gray-100 hover:bg-gray-50">
+                            <td class="py-4 px-4 font-bold">Acolhedor</td>
+                            <td class="py-4 px-4 text-gray-600">Segurança psicológica para Saúde/Diversidade.</td>
+                            <td class="py-4 px-4">Termos inclusivos: "nossa rede", "juntos". Escuta ativa.</td>
+                            <td class="py-4 px-4">Tom frio, imperativo ou autoritário.</td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50">
+                            <td class="py-4 px-4 font-bold">Vibrante</td>
+                            <td class="py-4 px-4 text-gray-600">Energia festiva para Cultura/Eventos (Carnaboia).</td>
+                            <td class="py-4 px-4">Verbos de ação: "criar", "celebrar". Entusiasmo autêntico.</td>
+                            <td class="py-4 px-4">Clichês forçados, animação irreal ou imatura.</td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50">
+                            <td class="py-4 px-4 font-bold">Técnico-Acessível</td>
+                            <td class="py-4 px-4 text-gray-600">Tradução pedagógica para o GitHub.</td>
+                            <td class="py-4 px-4">Passos modulares. Foco no benefício prático (Deploy ágil).</td>
+                            <td class="py-4 px-4">Jargões avançados sem contexto prévio.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-inspira-green text-inspira-offwhite border-t border-inspira-offwhite/10 py-12 text-center">
+        <i class="ph-fill ph-leaf text-4xl text-inspira-mustard mb-4"></i>
+        <h2 class="font-display font-bold text-3xl mb-2">AGRADECEMOS PELA PRESENÇA!</h2>
+        <p class="text-inspira-offwhite/60 text-sm mb-8">Coletivo Inspira • Bonito-MS / Belo Horizonte-MG</p>
+        
+        <div class="flex justify-center space-x-4">
+            <a href="https://instagram.com/coletivo_inspira" target="_blank" class="p-3 bg-inspira-offwhite/10 rounded-full hover:bg-inspira-orange transition text-xl">
+                <i class="ph-fill ph-instagram-logo"></i>
+            </a>
+            <a href="https://github.com/coletivo-inspira" target="_blank" class="p-3 bg-inspira-offwhite/10 rounded-full hover:bg-inspira-orange transition text-xl">
+                <i class="ph-fill ph-github-logo"></i>
+            </a>
+            <a href="https://wa.me/5531984647979" target="_blank" class="p-3 bg-inspira-offwhite/10 rounded-full hover:bg-inspira-orange transition text-xl">
+                <i class="ph-fill ph-whatsapp-logo"></i>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Script para Tabs -->
+    <script>
+        function openTab(tabId) {
+            // Esconde todos os conteúdos
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remove classe ativa dos botões
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-white', 'shadow-sm', 'text-inspira-green');
+                btn.classList.add('text-inspira-green/60');
+            });
+            
+            // Mostra a tab selecionada
+            document.getElementById(tabId).classList.add('active');
+            
+            // Ativa o botão clicado
+            const activeBtn = Array.from(buttons).find(btn => btn.getAttribute('onclick').includes(tabId));
+            if(activeBtn){
+                activeBtn.classList.remove('text-inspira-green/60');
+                activeBtn.classList.add('bg-white', 'shadow-sm', 'text-inspira-green');
+            }
+        }
+    </script>
+</body>
+</html>
