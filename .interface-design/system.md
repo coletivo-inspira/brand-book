@@ -5,8 +5,8 @@ Memória de interface do hub e do Brand Book. Sessões seguintes seguem estas re
 ## Fundação
 
 - 60% claro: off-white `#F7F7F4` com malha pontilhada (1px a cada 20–24px, floresta a ~18% de opacidade).
-- 30% arquitetura: verde floresta `#133824` como tinta, contorno e bloco de contraste. Menta `#A7E8C8` e lima `#B4FF33` como superfícies modulares.
-- 10% ação: mostarda `#E5A93C`, laranja `#FF6B2C`, rosa `#FF3385`. Só em CTA, status, sticker e acento.
+- 30% arquitetura: verde floresta `#133824` como tinta, contorno e bloco de contraste. Menta `#A3E5C2` e lima `#BAFF29` como superfícies modulares.
+- 10% ação: mostarda `#E5A93C`, laranja `#F05D23`, rosa `#E5007C`. Só em CTA, status, sticker e acento.
 
 ## Tipografia
 
@@ -19,14 +19,14 @@ Memória de interface do hub e do Brand Book. Sessões seguintes seguem estas re
 ```css
 --color-bg-primary: #F7F7F4;
 --color-forest: #133824;
---color-lime: #B4FF33;
---color-mint: #A7E8C8;
+--color-lime: #BAFF29;
+--color-mint: #A3E5C2;
 --color-mustard: #E5A93C;
---color-orange: #FF6B2C;
---color-pink: #FF3385;
+--color-orange: #F05D23;
+--color-pink: #E5007C;
 --border-hairline: 1px solid rgba(19, 56, 36, 0.16);
 --shadow-inspira-soft: 4px 4px 0px rgba(19, 56, 36, 0.12);
---shadow-inspira-lime: 4px 4px 0px #B4FF33;
+--shadow-inspira-lime: 4px 4px 0px #BAFF29;
 ```
 
 `.surface-dot-grid` usa o fundo off-white e pontos radiais. `.surface-mint-dot-grid` usa menta.
