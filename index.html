@@ -124,16 +124,58 @@
   </section>
 
   <section id="logo" class="py-16 max-w-7xl mx-auto px-4">
-    <h2 class="font-display text-4xl font-extrabold">Logotipo em bloco</h2>
-    <p class="mt-3 max-w-2xl">+INS sobre PIRA. A haste do I liga os dois andares. Sem distorcer, rotacionar, sombrear ou trocar a fonte.</p>
-    <div class="mt-8 bg-white/80 border border-[#133824]/10 p-10 md:p-16 flex justify-center overflow-hidden">
-      <div id="logo-mark" class="logo-stack stagger font-display font-black text-[#133824] text-[4.5rem] md:text-[8rem] tracking-tighter" style="font-weight: 800">
-        <div class="logo-col"><span>+</span><span>P</span></div>
-        <div class="logo-col"><span>I</span><span>I</span></div>
-        <div class="logo-col"><span>N</span><span>R</span></div>
-        <div class="logo-col"><span>S</span><span>A</span></div>
+    <h2 class="font-display text-4xl font-extrabold">Logotipo vetorial oficial</h2>
+    <p class="mt-3 max-w-2xl">
+      Cinco camadas: malha pontilhada, bloco lima <code class="font-mono text-sm">#BAFF29</code> com +,
+      wordmark INS/PIRA em floresta, 22 nós menta e COLETIVO. Área de respiro mínima = largura da haste do I (63u em canvas 1000×1000).
+      Sem distorcer, rotacionar, sombrear ou trocar os traços vetoriais.
+    </p>
+
+    <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="bg-white/80 border-2 border-[#133824] p-6 md:p-10 flex flex-col items-center justify-center">
+        <p class="self-start text-xs font-mono font-bold uppercase tracking-wide mb-4 bg-[#B4FF33] px-2 py-1 border border-[#133824]">Animada</p>
+        <img
+          id="logo-mark"
+          src="assets/logo/logo-animated.svg"
+          alt="Logo oficial +INSPIRA COLETIVO animada"
+          class="w-full max-w-md aspect-square"
+          width="1000"
+          height="1000"
+        />
+      </div>
+      <div class="bg-[linear-gradient(45deg,#e5e7eb_25%,transparent_25%),linear-gradient(-45deg,#e5e7eb_25%,transparent_25%),linear-gradient(45deg,transparent_75%,#e5e7eb_75%),linear-gradient(-45deg,transparent_75%,#e5e7eb_75%)] bg-[length:20px_20px] bg-[position:0_0,0_10px,10px_-10px,-10px_0] border-2 border-[#133824] p-6 md:p-10 flex flex-col items-center justify-center">
+        <p class="self-start text-xs font-mono font-bold uppercase tracking-wide mb-4 bg-white px-2 py-1 border border-[#133824]">Fundo transparente</p>
+        <img
+          src="assets/logo/logo-transparent.svg"
+          alt="Logo +INSPIRA COLETIVO sem fundo"
+          class="w-full max-w-md"
+          width="760"
+          height="635"
+        />
       </div>
     </div>
+
+    <div class="mt-6 flex flex-wrap gap-3 text-xs font-mono">
+      <a class="px-3 py-2 border-2 border-[#133824] bg-[#B4FF33] font-bold" href="assets/logo/logo.svg" download>logo.svg</a>
+      <a class="px-3 py-2 border-2 border-[#133824] bg-white font-bold" href="assets/logo/logo-transparent.svg" download>logo-transparent.svg</a>
+      <a class="px-3 py-2 border-2 border-[#133824] bg-white font-bold" href="assets/logo/logo-animated.svg" download>logo-animated.svg</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 text-sm">
+      <article class="bg-[#A7E8C8]/50 border border-[#133824]/15 p-5">
+        <h3 class="font-display font-bold text-lg">01. Arquitetura</h3>
+        <p class="mt-2 text-[#133824]/80">Bloco empilhado +INS / PIRA, ponte menta entre os I’s e nós digitais orgânicos.</p>
+      </article>
+      <article class="bg-[#B4FF33]/40 border border-[#133824]/15 p-5">
+        <h3 class="font-display font-bold text-lg">02. Respiro</h3>
+        <p class="mt-2 text-[#133824]/80">Margem mínima = haste do I (63 unidades no viewBox 1000×1000).</p>
+      </article>
+      <article class="bg-white border border-[#133824]/15 p-5">
+        <h3 class="font-display font-bold text-lg">03. 60-30-10</h3>
+        <p class="mt-2 text-[#133824]/80">Off-white pontilhado, floresta/menta estrutural, lima como foco de energia.</p>
+      </article>
+    </div>
+
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 text-xs">
       <div class="bg-red-50 border border-red-100 p-4 text-center"><div class="logo-stack wrong-stretch font-display font-black text-2xl justify-center"><div class="logo-col"><span>+</span><span>P</span></div><div class="logo-col"><span>I</span><span>I</span></div></div><p class="mt-2 text-red-700">Não distorcer</p></div>
       <div class="bg-red-50 border border-red-100 p-4 text-center"><div class="logo-stack wrong-rotate font-display font-black text-2xl justify-center"><div class="logo-col"><span>+</span><span>P</span></div><div class="logo-col"><span>I</span><span>I</span></div></div><p class="mt-2 text-red-700">Não rotacionar</p></div>
