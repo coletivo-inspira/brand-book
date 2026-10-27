@@ -8,30 +8,39 @@
   /* radial-gradient dots sit at the centre of each tile. */
   var GRID_OFFSET = GRID / 2;
   var LIFETIME_MS = 700;
+  var CALM_LIFETIME_MS = 450;
   var NODE_SIZE = 8;
   var BAR_WIDTH = 3;
   var MAX_SEGMENTS = 40;
   /* Jumps longer than this (in grid cells) start a new trail instead of drawing a long bar. */
   var MAX_LINK_CELLS = 12;
   var COLOR = "#A3E5C2";
-  var DISABLED_QUERY = "(prefers-reduced-motion: reduce), (hover: none), (pointer: coarse)";
-
-  if (typeof window.matchMedia !== "function") return;
+  /* Without `mix-blend-mode` the mint would sit on top of text, so it is drawn lighter. */
+  var NO_BLEND_OPACITY = 0.55;
+  var REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 
   var canvas = document.createElement("canvas");
   canvas.setAttribute("aria-hidden", "true");
   canvas.style.cssText =
-    "position:fixed;inset:0;z-index:60;width:100%;height:100%;pointer-events:none;mix-blend-mode:multiply;";
-  var ctx = canvas.getContext("2d");
+    "position:fixed;top:0;right:0;bottom:0;left:0;z-index:60;width:100%;height:100%;pointer-events:none;mix-blend-mode:multiply;";
+  var ctx = canvas.getContext && canvas.getContext("2d");
   if (!ctx) return;
   document.body.appendChild(canvas);
 
-  var disabledQuery = window.matchMedia(DISABLED_QUERY);
+  var reducedMotion = typeof window.matchMedia === "function" ? window.matchMedia(REDUCED_MOTION_QUERY) : null;
+  var blendSupported = !!(window.CSS && CSS.supports && CSS.supports("mix-blend-mode", "multiply"));
+  var opacity = blendSupported ? 1 : NO_BLEND_OPACITY;
+  var moveEvent = "PointerEvent" in window ? "pointermove" : "mousemove";
+
+  var calm = !!(reducedMotion && reducedMotion.matches);
   var segments = [];
   var last = null;
   var pointer = null;
   var frame = 0;
-  var listening = false;
+
+  function lifetime() {
+    return calm ? CALM_LIFETIME_MS : LIFETIME_MS;
+  }
 
   function snapToDots(x, y) {
     return {
@@ -58,10 +67,29 @@
     return path;
   }
 
-  function segmentAlpha(age) {
+  function extendTrail(next, now) {
+    if (calm) {
+      segments = [{ point: next, from: null, born: now }];
+      return;
+    }
+
+    var cells = last ? Math.max(Math.abs(next.x - last.x), Math.abs(next.y - last.y)) / GRID : 0;
+    if (!last || cells > MAX_LINK_CELLS) {
+      segments.push({ point: next, from: null, born: now });
+    } else {
+      var previous = last;
+      connectPoints(last, next).forEach(function (point) {
+        segments.push({ point: point, from: previous, born: now });
+        previous = point;
+      });
+    }
+    if (segments.length > MAX_SEGMENTS) segments = segments.slice(-MAX_SEGMENTS);
+  }
+
+  function segmentAlpha(age, life) {
     if (age <= 0) return 1;
-    if (age >= LIFETIME_MS) return 0;
-    var t = age / LIFETIME_MS;
+    if (age >= life) return 0;
+    var t = age / life;
     return 1 - t * t;
   }
 
@@ -73,23 +101,24 @@
   }
 
   function draw(now) {
+    var life = lifetime();
     segments = segments.filter(function (segment) {
-      return now - segment.born < LIFETIME_MS;
+      return now - segment.born < life;
     });
     ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
     ctx.fillStyle = COLOR;
     ctx.strokeStyle = COLOR;
     ctx.lineCap = "square";
 
-    var offsetX = window.scrollX;
-    var offsetY = window.scrollY;
+    var offsetX = window.scrollX || window.pageXOffset;
+    var offsetY = window.scrollY || window.pageYOffset;
 
     segments.forEach(function (segment) {
-      var alpha = segmentAlpha(now - segment.born);
-      var scale = 0.35 + 0.65 * alpha;
+      var alpha = segmentAlpha(now - segment.born, life);
+      var scale = calm ? 1 : 0.35 + 0.65 * alpha;
       var x = segment.point.x - offsetX;
       var y = segment.point.y - offsetY;
-      ctx.globalAlpha = alpha;
+      ctx.globalAlpha = alpha * opacity;
 
       if (segment.from) {
         ctx.lineWidth = BAR_WIDTH * scale;
@@ -109,67 +138,47 @@
 
   function trackPointer() {
     if (!pointer) return;
-    var next = snapToDots(pointer.x + window.scrollX, pointer.y + window.scrollY);
+    var next = snapToDots(
+      pointer.x + (window.scrollX || window.pageXOffset),
+      pointer.y + (window.scrollY || window.pageYOffset)
+    );
     if (last && last.x === next.x && last.y === next.y) return;
 
-    var now = performance.now();
-    var cells = last ? Math.max(Math.abs(next.x - last.x), Math.abs(next.y - last.y)) / GRID : 0;
-
-    if (!last || cells > MAX_LINK_CELLS) {
-      segments.push({ point: next, from: null, born: now });
-    } else {
-      var previous = last;
-      connectPoints(last, next).forEach(function (point) {
-        segments.push({ point: point, from: previous, born: now });
-        previous = point;
-      });
-    }
-
-    if (segments.length > MAX_SEGMENTS) segments = segments.slice(-MAX_SEGMENTS);
+    extendTrail(next, performance.now());
     last = next;
     if (!frame) frame = requestAnimationFrame(draw);
   }
 
-  function onPointerMove(event) {
+  /*
+   * Touch and pen input are ignored by checking `pointerType` on each event rather than
+   * `(hover: none)` / `(pointer: coarse)`: touchscreen laptops and some desktop browsers
+   * report those media features even when a mouse is in use.
+   */
+  function onMove(event) {
     if (event.pointerType && event.pointerType !== "mouse") return;
     pointer = { x: event.clientX, y: event.clientY };
     trackPointer();
   }
 
-  function onPointerLeave() {
+  function onLeave() {
     pointer = null;
     last = null;
   }
 
-  function start() {
-    if (listening) return;
-    listening = true;
-    resize();
-    window.addEventListener("pointermove", onPointerMove, { passive: true });
-    window.addEventListener("scroll", trackPointer, { passive: true });
-    window.addEventListener("resize", resize);
-    document.documentElement.addEventListener("pointerleave", onPointerLeave);
-  }
-
-  function stop() {
-    if (!listening) return;
-    listening = false;
-    window.removeEventListener("pointermove", onPointerMove);
-    window.removeEventListener("scroll", trackPointer);
-    window.removeEventListener("resize", resize);
-    document.documentElement.removeEventListener("pointerleave", onPointerLeave);
-    cancelAnimationFrame(frame);
-    frame = 0;
+  function onMotionChange() {
+    calm = !!(reducedMotion && reducedMotion.matches);
     segments = [];
     last = null;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 
-  function sync() {
-    if (disabledQuery.matches) stop();
-    else start();
+  resize();
+  window.addEventListener(moveEvent, onMove, { passive: true });
+  window.addEventListener("scroll", trackPointer, { passive: true });
+  window.addEventListener("resize", resize);
+  document.documentElement.addEventListener("mouseleave", onLeave);
+  if (reducedMotion && reducedMotion.addEventListener) {
+    reducedMotion.addEventListener("change", onMotionChange);
+  } else if (reducedMotion && reducedMotion.addListener) {
+    reducedMotion.addListener(onMotionChange);
   }
-
-  sync();
-  if (disabledQuery.addEventListener) disabledQuery.addEventListener("change", sync);
 })();
