@@ -112,6 +112,7 @@
         <a href="#cores">Cores</a>
         <a href="#tipografia">Tipografia</a>
         <a href="#voz">Voz</a>
+        <a href="#orb">Orb</a>
       </div>
     </div>
   </nav>
@@ -289,6 +290,23 @@
     </div>
   </section>
 
+  <section id="orb" class="py-16 max-w-7xl mx-auto px-4">
+    <h2 class="font-display text-4xl font-extrabold">Orb +INSPIRA</h2>
+    <p class="mt-4 max-w-2xl leading-relaxed text-[#133824]/80">Selo flutuante para qualquer site ou subdomínio do coletivo. Fica no canto inferior esquerdo, cicla lima → menta → laranja, revela o + no hover e leva ao hub oficial.</p>
+    <p class="mt-6 text-sm font-bold uppercase tracking-[0.14em] text-[#133824]/70">Embed (1 linha)</p>
+    <pre class="mt-3 overflow-x-auto bg-[#133824] text-[#BAFF29] p-5 text-sm leading-relaxed"><code>&lt;script
+  src="https://coletivo-inspira.github.io/brand-book/assets/js/inspira-orb.js"
+  data-href="https://inspira.dev.br/"
+  defer
+&gt;&lt;/script&gt;</code></pre>
+    <ul class="mt-6 grid md:grid-cols-3 gap-3 text-sm">
+      <li class="border border-[#133824]/15 bg-white/70 p-4"><strong class="font-display">data-href</strong><br>Destino do clique (padrão: inspira.dev.br).</li>
+      <li class="border border-[#133824]/15 bg-white/70 p-4"><strong class="font-display">data-label</strong><br>Texto acessível do link.</li>
+      <li class="border border-[#133824]/15 bg-white/70 p-4"><strong class="font-display">data-hide-on</strong><br>Hostnames CSV onde a orb não monta.</li>
+    </ul>
+    <p class="mt-6 text-sm text-[#133824]/70">A prévia ao vivo está no canto inferior esquerdo desta página.</p>
+  </section>
+
   <footer class="border-t border-[#133824]/10 py-10 text-center">
     <p class="font-display font-extrabold text-2xl">+INSPIRA</p>
     <p class="text-sm mt-2">Coletivo Inspira · Bonito-MS / Belo Horizonte-MG</p>
@@ -352,5 +370,10 @@
     });
   </script>
   <script src="assets/js/dot-trail.js?v=2" defer></script>
+  <script
+    src="assets/js/inspira-orb.js?v=1"
+    data-href="https://inspira.dev.br/"
+    defer
+  ></script>
 </body>
 </html>
