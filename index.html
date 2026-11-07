@@ -291,20 +291,96 @@
   </section>
 
   <section id="orb" class="py-16 max-w-7xl mx-auto px-4">
-    <h2 class="font-display text-4xl font-extrabold">Orb +INSPIRA</h2>
-    <p class="mt-4 max-w-2xl leading-relaxed text-[#133824]/80">Selo flutuante em liquid glass: uma gota de vidro com contorno orgânico e as cores do coletivo (lima, menta, laranja) fluindo por dentro. Fica discreta no canto inferior esquerdo e se inclina quando o mouse se aproxima; no hover ela cresce, o líquido acelera e o maisinho surge flutuando. O clique leva ao hub oficial.</p>
-    <p class="mt-6 text-sm font-bold uppercase tracking-[0.14em] text-[#133824]/70">Embed (1 linha)</p>
-    <pre class="mt-3 overflow-x-auto bg-[#133824] text-[#BAFF29] p-5 text-sm leading-relaxed"><code>&lt;script
+    <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-[0.18em] text-[#F05D23]">Selo de pertencimento</p>
+        <h2 class="font-display text-4xl md:text-5xl font-extrabold mt-3">Orb +INSPIRA</h2>
+        <p class="mt-5 max-w-xl text-lg leading-relaxed text-[#133824]/85">A orb é o selo que costura a rede. Todo site, subdomínio e sistema do Coletivo Inspira leva uma, e ela sempre aponta de volta para o hub oficial, <strong>inspira.dev.br</strong>.</p>
+        <p class="mt-4 max-w-xl leading-relaxed text-[#133824]/80">Ela é uma gota de vidro líquido: um contorno orgânico que respira devagar, com lima, menta e laranja fluindo por dentro. Discreta quando está parada, viva quando alguém chega perto. No hover, o maisinho do +INSPIRA surge flutuando no líquido, sem girar.</p>
+        <p class="mt-4 max-w-xl leading-relaxed text-[#133824]/80">Não é um botão de ação nem um ícone de menu. É uma assinatura: diz “isto faz parte do coletivo” sem disputar atenção com o conteúdo do projeto.</p>
+      </div>
+      <figure class="relative">
+        <div data-inspira-orb-showcase></div>
+        <figcaption class="mt-2 text-center text-sm text-[#133824]/70">Passe o mouse na orb. Vitrine ampliada: em produção ela tem 64 px.</figcaption>
+      </figure>
+    </div>
+
+    <h3 class="font-display text-2xl font-extrabold mt-16">Anatomia</h3>
+    <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
+      <article class="border border-[#133824]/15 bg-white/70 p-5"><p class="font-display text-lg font-bold">Vidro</p><p class="mt-2 leading-relaxed">Brilho especular no topo, luz refletida embaixo e uma borda iluminada. É o que dá a leitura de liquid glass em fundo claro ou escuro.</p></article>
+      <article class="border border-[#133824]/15 bg-white/70 p-5"><p class="font-display text-lg font-bold">Líquido</p><p class="mt-2 leading-relaxed">Lima <span class="font-mono">#BAFF29</span>, menta <span class="font-mono">#A3E5C2</span> e laranja <span class="font-mono">#F05D23</span> se misturam e trocam de lugar num ciclo de cerca de 14 s.</p></article>
+      <article class="border border-[#133824]/15 bg-white/70 p-5"><p class="font-display text-lg font-bold">Contorno</p><p class="mt-2 leading-relaxed">Ondula de leve o tempo todo e se inclina na direção do cursor quando ele se aproxima. Nunca é um círculo perfeito.</p></article>
+      <article class="border border-[#133824]/15 bg-white/70 p-5"><p class="font-display text-lg font-bold">Maisinho</p><p class="mt-2 leading-relaxed">O + do logo, em floresta <span class="font-mono">#133824</span> com brilho de vidro. Aparece no hover e boia com o líquido. Não gira.</p></article>
+    </div>
+
+    <h3 class="font-display text-2xl font-extrabold mt-16">Comportamento</h3>
+    <div class="mt-6 overflow-x-auto bg-white border border-[#133824]/10">
+      <table class="w-full text-left text-sm min-w-[640px]">
+        <thead><tr class="border-b border-[#133824]/10"><th class="p-4">Momento</th><th class="p-4">O que acontece</th></tr></thead>
+        <tbody>
+          <tr class="border-b border-[#133824]/10"><td class="p-4 font-bold">Parada</td><td class="p-4">Gota pequena, cores fluindo devagar e um halo suave da cor do momento.</td></tr>
+          <tr class="border-b border-[#133824]/10"><td class="p-4 font-bold">Mouse por perto</td><td class="p-4">O contorno se inclina na direção do cursor, como uma gota reagindo.</td></tr>
+          <tr class="border-b border-[#133824]/10"><td class="p-4 font-bold">Hover ou foco</td><td class="p-4">A gota cresce um pouco, o líquido acelera e o maisinho surge.</td></tr>
+          <tr class="border-b border-[#133824]/10"><td class="p-4 font-bold">Clique</td><td class="p-4">Leva ao hub oficial <strong>inspira.dev.br</strong>.</td></tr>
+          <tr class="border-b border-[#133824]/10"><td class="p-4 font-bold">Toque (celular)</td><td class="p-4">Sem hover, então o maisinho já fica visível para indicar que dá para tocar.</td></tr>
+          <tr><td class="p-4 font-bold">Movimento reduzido</td><td class="p-4">Quem pede menos movimento no sistema vê a orb parada, sem animação.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="font-display text-2xl font-extrabold mt-16">Onde usar</h3>
+    <p class="mt-3 max-w-2xl leading-relaxed text-[#133824]/80">A orb vive na borda do site, nunca no meio do conteúdo. São só duas posições permitidas, e uma orb por página.</p>
+    <div class="mt-6 grid md:grid-cols-2 gap-3 text-sm">
+      <article class="bg-[#133824] text-[#F7F7F4] p-6">
+        <p class="font-display text-xl font-bold text-[#BAFF29]">1. Canto inferior esquerdo</p>
+        <p class="mt-2 leading-relaxed">Posição padrão. A orb fica fixa a cerca de 1 rem das bordas e acompanha a rolagem. Use em sites e sistemas onde o canto esquerdo está livre.</p>
+      </article>
+      <article class="bg-[#A3E5C2] p-6">
+        <p class="font-display text-xl font-bold">2. Final do site, no rodapé</p>
+        <p class="mt-2 leading-relaxed">Quando o canto já está ocupado (chat, cookies, botão flutuante), a orb entra no rodapé, junto da assinatura do projeto, e não fica fixa.</p>
+      </article>
+    </div>
+    <div class="mt-3 overflow-x-auto bg-white border border-[#133824]/10">
+      <table class="w-full text-left text-sm min-w-[720px]">
+        <thead><tr class="border-b border-[#133824]/10"><th class="p-4">Fazer</th><th class="p-4">Evitar</th></tr></thead>
+        <tbody>
+          <tr class="border-b border-[#133824]/10"><td class="p-4">Manter no canto inferior esquerdo ou no rodapé</td><td class="p-4">Colocar no topo, no header ou no meio do conteúdo</td></tr>
+          <tr class="border-b border-[#133824]/10"><td class="p-4">Deixar um respiro livre de cerca de 1,25 rem em volta, para o halo</td><td class="p-4">Encostar em botões, CTAs, banners de cookies ou widgets de chat</td></tr>
+          <tr class="border-b border-[#133824]/10"><td class="p-4">Usar o tamanho padrão de 64 px</td><td class="p-4">Ampliar em produção (o tamanho grande é só para vitrines como esta)</td></tr>
+          <tr class="border-b border-[#133824]/10"><td class="p-4">Apontar sempre para o hub oficial</td><td class="p-4">Usar a orb como botão de ação do próprio projeto</td></tr>
+          <tr><td class="p-4">Manter vidro, cores e maisinho como estão</td><td class="p-4">Trocar as cores, fazer o maisinho girar ou piscar</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="font-display text-2xl font-extrabold mt-16">Como usar</h3>
+    <div class="mt-6 grid gap-6">
+      <div>
+        <p class="text-sm font-bold uppercase tracking-[0.14em] text-[#133824]/70">No canto (padrão)</p>
+        <pre class="mt-3 overflow-x-auto bg-[#133824] text-[#BAFF29] p-5 text-sm leading-relaxed"><code>&lt;script
   src="https://coletivo-inspira.github.io/brand-book/assets/js/inspira-orb.js"
   data-href="https://inspira.dev.br/"
   defer
 &gt;&lt;/script&gt;</code></pre>
-    <ul class="mt-6 grid md:grid-cols-3 gap-3 text-sm">
+      </div>
+      <div>
+        <p class="text-sm font-bold uppercase tracking-[0.14em] text-[#133824]/70">No rodapé</p>
+        <pre class="mt-3 overflow-x-auto bg-[#133824] text-[#BAFF29] p-5 text-sm leading-relaxed"><code>&lt;footer id="rodape"&gt; ... &lt;/footer&gt;
+
+&lt;script
+  src="https://coletivo-inspira.github.io/brand-book/assets/js/inspira-orb.js"
+  data-mount="#rodape"
+  defer
+&gt;&lt;/script&gt;</code></pre>
+      </div>
+    </div>
+    <ul class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
       <li class="border border-[#133824]/15 bg-white/70 p-4"><strong class="font-display">data-href</strong><br>Destino do clique (padrão: inspira.dev.br).</li>
       <li class="border border-[#133824]/15 bg-white/70 p-4"><strong class="font-display">data-label</strong><br>Texto acessível do link.</li>
-      <li class="border border-[#133824]/15 bg-white/70 p-4"><strong class="font-display">data-hide-on</strong><br>Hostnames CSV onde a orb não monta.</li>
+      <li class="border border-[#133824]/15 bg-white/70 p-4"><strong class="font-display">data-mount</strong><br>Seletor do container (ex.: o rodapé). Sem ele, a orb fica fixa no canto.</li>
+      <li class="border border-[#133824]/15 bg-white/70 p-4"><strong class="font-display">data-hide-on</strong><br>Hostnames, separados por vírgula, onde a orb não aparece.</li>
     </ul>
-    <p class="mt-6 text-sm text-[#133824]/70">A prévia ao vivo está no canto inferior esquerdo desta página.</p>
+    <p class="mt-6 text-sm text-[#133824]/70">No portal inspira.dev.br a orb vem do componente React <span class="font-mono">InspiraOrb</span>, com o mesmo visual. A orb fixa desta página está no canto inferior esquerdo.</p>
   </section>
 
   <footer class="border-t border-[#133824]/10 py-10 text-center">
@@ -371,7 +447,7 @@
   </script>
   <script src="assets/js/dot-trail.js?v=2" defer></script>
   <script
-    src="assets/js/inspira-orb.js?v=3"
+    src="assets/js/inspira-orb.js?v=4"
     data-href="https://inspira.dev.br/"
     defer
   ></script>
